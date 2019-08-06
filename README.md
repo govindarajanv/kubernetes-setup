@@ -5,7 +5,7 @@ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubun
 sudo apt-get update <br />
 sudo apt-get install -y docker-ce=18.06.1~ce~3-0~ubuntu <br />
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add - <br />
-cat <<- EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list <br />
+cat << EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list <br />
 deb https://apt.kubernetes.io/ kubernetes-xenial main <br />
 EOF <br />
 sudo apt-get update <br />

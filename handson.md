@@ -10,3 +10,4 @@ kubectl create deployment tomcat-dev --image=tomcat -n dev
 kubectl create deployment mongo-dev --image=mongo -n dev
 ##### sock shop
 kubectl create namespace sock-shop
+kubectl apply -f https://raw.githubusercontent.com/microservices-demo/microservices-demo/master/deploy/kubernetes/complete-demo.yaml

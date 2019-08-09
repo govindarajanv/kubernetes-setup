@@ -11,3 +11,8 @@ kubectl create deployment mongo-dev --image=mongo -n dev
 ##### sock shop
 kubectl create namespace sock-shop
 kubectl apply -f https://raw.githubusercontent.com/microservices-demo/microservices-demo/master/deploy/kubernetes/complete-demo.yaml
+kubectl get deployments -n sock-shop
+kubectl get pods -n sock-shop
+kubectl scale deployments carts catalogue --replicas=3 -n sock-shop
+kubectl get deployments -n sock-shop
+kubectl get hpa -n sock-shop

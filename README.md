@@ -4,15 +4,9 @@
 
  sudo apt-get remove docker docker-engine docker.io containerd runc  <br />
  sudo apt-get update  <br />
- sudo apt-get install \
-    ca-certificates \  <br />
-    curl \  <br />
-    gnupg \  <br />
-    lsb-release   <br />
+ sudo apt-get install ca-certificates curl gnupg lsb-release <br />
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg  <br />
-echo \  <br />
-  "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \  <br />
-  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null  <br />
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null  <br />
  sudo apt-get update  <br />
  sudo apt-get install docker-ce docker-ce-cli containerd.io  <br />
  sudo docker run hello-world  <br />

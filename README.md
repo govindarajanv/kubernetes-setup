@@ -2,23 +2,23 @@
 
 ### Install Docker
 
- sudo apt-get remove docker docker-engine docker.io containerd runc
- sudo apt-get update
+ sudo apt-get remove docker docker-engine docker.io containerd runc  <br />
+ sudo apt-get update  <br />
  sudo apt-get install \
-    ca-certificates \
-    curl \
-    gnupg \
-    lsb-release
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
-  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
- sudo apt-get update
- sudo apt-get install docker-ce docker-ce-cli containerd.io
- sudo docker run hello-world
+    ca-certificates \  <br />
+    curl \  <br />
+    gnupg \  <br />
+    lsb-release   <br />
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg  <br />
+echo \  <br />
+  "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \  <br />
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null  <br />
+ sudo apt-get update  <br />
+ sudo apt-get install docker-ce docker-ce-cli containerd.io  <br />
+ sudo docker run hello-world  <br />
 
-sudo mkdir /etc/docker
-cat <<EOF | sudo tee /etc/docker/daemon.json
+sudo mkdir /etc/docker  <br />
+cat <<EOF | sudo tee /etc/docker/daemon.json 
 {
   "exec-opts": ["native.cgroupdriver=systemd"],
   "log-driver": "json-file",
@@ -27,23 +27,22 @@ cat <<EOF | sudo tee /etc/docker/daemon.json
   },
   "storage-driver": "overlay2"
 }
-EOF
+EOF  <br />
 
-sudo systemctl enable docker
-sudo systemctl daemon-reload
-sudo systemctl restart docker
+sudo systemctl enable docker  <br />
+sudo systemctl daemon-reload  <br />
+sudo systemctl restart docker  <br />
 
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - <br />
-sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" <br />
-sudo apt-get update <br />
-sudo apt-get install -y docker-ce=18.06.1~ce~3-0~ubuntu <br />
-curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add - <br />
-sudo bash -c 'cat << EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list  <br/>
-deb https://apt.kubernetes.io/ kubernetes-xenial main  <br/>
-EOF' <br/>
-sudo apt-get update <br />
-sudo apt-get install -y kubelet=1.12.7-00 kubeadm=1.12.7-00 kubectl=1.12.7-00 <br />
-sudo apt-mark hold kubelet kubeadm kubectl <br />
+sudo apt-get update  <br />
+sudo apt-get install -y apt-transport-https ca-certificates curl  <br />
+sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg  <br />
+echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list  <br />
+sudo apt-get update  <br />
+sudo apt-get install -y kubelet kubeadm kubectl  <br />
+sudo apt-mark hold kubelet kubeadm kubectl  <br />
+
+
+
 
 # on master node
 sudo kubeadm init --pod-network-cidr=10.244.0.0/16 --ignore-preflight-errors all<br />

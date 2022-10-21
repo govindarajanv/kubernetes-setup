@@ -31,11 +31,11 @@ sudo systemctl daemon-reload  <br />
 sudo systemctl restart docker  <br />
  sudo docker run hello-world  <br />
  
-sudo apt-get update  <br />
+sudo apt-get update -y <br />
 sudo apt-get install -y apt-transport-https ca-certificates curl  <br />
 sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg  <br />
 echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list  <br />
-sudo apt-get update  <br />
+sudo apt-get update -y <br />
 sudo apt-get install -y kubelet kubeadm kubectl  <br />
 sudo apt-mark hold kubelet kubeadm kubectl  <br />
 

@@ -12,6 +12,7 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docke
 
 
 sudo mkdir /etc/docker  <br />
+```
 cat <<EOF | sudo tee /etc/docker/daemon.json 
 {
   "exec-opts": ["native.cgroupdriver=systemd"],
@@ -21,7 +22,9 @@ cat <<EOF | sudo tee /etc/docker/daemon.json
   },
   "storage-driver": "overlay2"
 }
-EOF  <br />
+EOF 
+```
+<br />
 
 sudo systemctl enable docker  <br />
 sudo systemctl daemon-reload  <br />
